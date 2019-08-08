@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Arbolado</string>
+    <string name="et_nombre">Nombre</string>
+    <string name="et_apellido">Apellido</string>
+    <string name="et_dni">DNI</string>
+    <string name="btn_ingresar">Ingresar</string>
+    <string name="tv_titulo">Bienvenido al sistema</string>
+
+    <string name="btn_censar">Censar</string>
+    <string name="btn_verregistros">Ver registros</string>
+
+    <string name="tv_tituloregistros">Arboles censados</string>
+    <string name="tv_titulousuario">Datos del usuario</string>
+    <string name="tv_tituloarbol">Datos del arbol</string>
+    <string name="tv_titulocamara">Capture una imagen</string>
+    <string name="tv_tituloestado">Datos del estado del arbol</string>
+    <string name="tv_titulolocal">Captura las coordenadas</string>
+    <string name="tv_titulovereda">Datos de la calle</string>
+
+    <string name="et_calle">Calle</string>
+    <string name="et_numerofrente">Numero de frente</string>
+    <string name="et_anchovereda">Ancho de la vereda (cm)</string>
+    <string name="btn_continuar">Continuar</string>
+
+    <string name="et_numeroarbol">Numero del arbol</string>
+    <string name="et_distanciaplantas">Distancia entre plantas (cm)</string>
+    <string name="et_distanciamuro">Distancia al muro (cm)</string>
+    <string name="et_circunferencia">Circunferencia del arbol (cm)</string>
+    <string name="et_comentario">Comentario</string>
+
+    <string name="btn_geo">Actualizar coordenadas</string>
+    <string name="tv_latitud">Latitud:</string>
+    <string name="tv_longitud">Longitud:</string>
+
+    <string name="btn_galeria">Ir a galeria</string>
+    <string name="btn_camara">Ir a camara</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="55dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="@string/tv_titulo"
+                android:textSize="28sp"
+                android:textColor="#000"/>
+
+
+            <Button
+                android:id="@+id/btn_censar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="censar"
+                android:text="@string/btn_censar" />
+
+            <Button
+                android:id="@+id/btn_verregistros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="verRegistros"
+                android:text="@string/btn_verregistros" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
