@@ -79,6 +79,10 @@ public class EstadoActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "ID registro: " + id, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, CoordenadaActivity.class);
+        intent.putExtra("idUsuario", getIntent().getLongExtra("idUsuario", 0));
+        intent.putExtra("idCalle", getIntent().getLongExtra("idCalle", 0));
+        intent.putExtra("idArbol", getIntent().getLongExtra("idArbol", 0));
+        intent.putExtra("idEstadoDelArbol", id);
         startActivity(intent);
     }
 }

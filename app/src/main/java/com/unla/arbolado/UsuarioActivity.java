@@ -43,6 +43,9 @@ public class UsuarioActivity extends AppCompatActivity {
         if (nombre.isEmpty() || apellido.isEmpty() || dni.isEmpty()) {
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
         }
+        if (dni.length() < 7 || dni.length() > 9) {
+            Toast.makeText(this, "DNI debe estar entre 7 y 9 digitos", Toast.LENGTH_SHORT).show();
+        }
         else {
             SharedPreferences preferences = getSharedPreferences("usuario", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
@@ -55,6 +58,7 @@ public class UsuarioActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "ID registro: " + id, Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, CalleActivity.class);
+            intent.putExtra("idUsuario", id);
             startActivity(intent);
         }
     }

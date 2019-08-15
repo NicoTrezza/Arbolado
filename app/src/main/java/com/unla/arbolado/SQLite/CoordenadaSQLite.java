@@ -29,6 +29,17 @@ public class CoordenadaSQLite extends AdminSQLite {
         return db.insert(Contrato.CoordenadaEntry.TABLA, null, coordenada.toContentValues());
     }
 
+    public Coordenada traer(int idCoordenada) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(Contrato.CoordenadaEntry.SELECT + " WHERE " + Contrato.CoordenadaEntry.ID + "=" + idCoordenada, null);
+        Coordenada coordenada = null;
+
+        if (cursor.moveToFirst()) {
+            coordenada = new Coordenada(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+        }
+
+        return coordenada;
+    }
 
     public List<Coordenada> traer() {
         SQLiteDatabase db = getReadableDatabase();
@@ -36,7 +47,7 @@ public class CoordenadaSQLite extends AdminSQLite {
         List<Coordenada> coordenadas = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-            coordenadas.add(new Coordenada(Integer.parseInt(cursor.getString(0)), Double.parseDouble(cursor.getString(1)), Double.parseDouble(cursor.getString(2))));
+            coordenadas.add(new Coordenada(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2)));
         }
 
         return coordenadas;

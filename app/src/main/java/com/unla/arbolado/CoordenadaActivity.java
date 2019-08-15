@@ -15,7 +15,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.unla.arbolado.SQLite.ArbolSQLite;
+import com.unla.arbolado.SQLite.CalleSQLite;
+import com.unla.arbolado.SQLite.CensoSQLite;
 import com.unla.arbolado.SQLite.CoordenadaSQLite;
+import com.unla.arbolado.SQLite.EstadoDelArbolSQLite;
+import com.unla.arbolado.SQLite.UsuarioSQLite;
+import com.unla.arbolado.modelo.Censo;
 import com.unla.arbolado.modelo.Coordenada;
 
 public class CoordenadaActivity extends AppCompatActivity implements LocationListener {
@@ -80,8 +86,19 @@ public class CoordenadaActivity extends AppCompatActivity implements LocationLis
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
         }
         else {
-            long id = CoordenadaSQLite.getInstance(this).agregar(new Coordenada(Double.parseDouble(latitud), Double.parseDouble(longitud)));
+            int id = (int) CoordenadaSQLite.getInstance(this).agregar(
+                    new Coordenada(latitud.split("\\.")[0] + "." + latitud.split("\\.")[1].substring(0, 5),
+                                longitud.split("\\.")[0] + "." + longitud.split("\\.")[1].substring(0, 5)));
             Toast.makeText(getApplicationContext(), "ID registro: " + id, Toast.LENGTH_SHORT).show();
+
+            int idUsuario = (int) getIntent().getLongExtra("idUsuario", 0);
+            int idCalle = (int) getIntent().getLongExtra("idCalle", 0);
+            int idArbol = (int) getIntent().getLongExtra("idArbol", 0);
+            int idEstadoDelArbol = (int) getIntent().getLongExtra("idEstadoDelArbol", 0);
+
+            CensoSQLite.getInstance(this).agregar(new Censo(UsuarioSQLite.getInstance(this).traer(idUsuario), CalleSQLite.getInstance(this).traer(idCalle),
+                    ArbolSQLite.getInstance(this).traer(idArbol), EstadoDelArbolSQLite.getInstance(this).traer(idEstadoDelArbol),
+                    CoordenadaSQLite.getInstance(this).traer(id)));
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

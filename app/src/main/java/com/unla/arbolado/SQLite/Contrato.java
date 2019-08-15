@@ -120,12 +120,37 @@ public class Contrato {
         public static final String LONGITUD = "longitud";
         public static final String CREATE = "CREATE TABLE " + TABLA +
                 "( " + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + LATITUD + " REAL, "
-                + LONGITUD + " REAL ) ";
+                + LATITUD + " TEXT, "
+                + LONGITUD + " TEXT ) ";
         public static final String DROP = "DROP TABLE IF EXISTS " + TABLA;
         public static final String SELECT = "SELECT " + ID + ", "
                 + LATITUD + ", "
                 + LONGITUD + " FROM "
+                + TABLA;
+    }
+
+    public static abstract class CensoEntry implements BaseColumns {
+        public static final String TABLA = "censo";
+        public static final String ID = "idCenso";
+        public static final String USUARIO = "usuario";
+        public static final String CALLE = "calle";
+        public static final String ARBOL = "arbol";
+        public static final String ESTADO_DEL_ARBOL = "estadoDelArbol";
+        public static final String COORDENADA = "coordenada";
+        public static final String CREATE = "CREATE TABLE " + TABLA +
+                "( " + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + USUARIO + " INTEGER, "
+                + CALLE + " INTEGER, "
+                + ARBOL + " INTEGER, "
+                + ESTADO_DEL_ARBOL + " INTEGER, "
+                + COORDENADA + " INTEGER ) ";
+        public static final String DROP = "DROP TABLE IF EXISTS " + TABLA;
+        public static final String SELECT = "SELECT " + ID + ", "
+                + USUARIO + ", "
+                + CALLE + ", "
+                + ARBOL + ", "
+                + ESTADO_DEL_ARBOL + ", "
+                + COORDENADA + " FROM "
                 + TABLA;
     }
 

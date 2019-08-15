@@ -29,6 +29,18 @@ public class CalleSQLite extends AdminSQLite {
         return db.insert(Contrato.CalleEntry.TABLA, null, calle.toContentValues());
     }
 
+    public Calle traer(int idCalle) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(Contrato.CalleEntry.SELECT + " WHERE " + Contrato.CalleEntry.ID + "=" + idCalle, null);
+        Calle calle = null;
+
+        if (cursor.moveToFirst()) {
+            calle = new Calle(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
+                    Integer.parseInt(cursor.getString(2)), Float.parseFloat(cursor.getString(3)), cursor.getString(4), cursor.getString(5));
+        }
+
+        return calle;
+    }
 
     public List<Calle> traer() {
         SQLiteDatabase db = getReadableDatabase();

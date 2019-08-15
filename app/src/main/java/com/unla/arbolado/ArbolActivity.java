@@ -414,10 +414,20 @@ public class ArbolActivity extends AppCompatActivity {
             Toast.makeText(this, "Debes completar el numero de arbol", Toast.LENGTH_SHORT).show();
         }
         else {
+            if (distanciaplantas.isEmpty())
+                distanciaplantas = "0";
+            if (distanciamuro.isEmpty())
+                distanciamuro = "0";
+            if (circunferencia.isEmpty())
+                circunferencia = "0";
+
             long id = ArbolSQLite.getInstance(this).agregar(new Arbol(especie, Integer.parseInt(numeroarbol), Float.parseFloat(distanciaplantas), Float.parseFloat(distanciamuro), Float.parseFloat(circunferencia), cazuela, comentario));
             Toast.makeText(getApplicationContext(), "ID registro: " + id, Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, EstadoActivity.class);
+            intent.putExtra("idUsuario", getIntent().getLongExtra("idUsuario", 0));
+            intent.putExtra("idCalle", getIntent().getLongExtra("idCalle", 0));
+            intent.putExtra("idArbol", id);
             startActivity(intent);
         }
     }

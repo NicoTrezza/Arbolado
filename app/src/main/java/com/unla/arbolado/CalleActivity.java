@@ -49,15 +49,23 @@ public class CalleActivity extends AppCompatActivity {
         String paridad = s_paridad.getSelectedItem().toString();
         String transito = s_transito.getSelectedItem().toString();
 
-        if (calle.isEmpty() || numerocasa.isEmpty() || anchovereda.isEmpty()) {
+        long id = 0;
+
+        if (calle.isEmpty() && numerocasa.isEmpty()) {
             Toast.makeText(this, "Estas en el campo", Toast.LENGTH_SHORT).show();
+            id = CalleSQLite.getInstance(this).agregar(new Calle("", 0, 0, paridad, transito));
         }
         else {
-            long id = CalleSQLite.getInstance(this).agregar(new Calle(calle, Integer.parseInt(numerocasa), Float.parseFloat(anchovereda), paridad, transito));
+            if (anchovereda.isEmpty())
+                anchovereda = "0";
+
+            id = CalleSQLite.getInstance(this).agregar(new Calle(calle, Integer.parseInt(numerocasa), Float.parseFloat(anchovereda), paridad, transito));
             Toast.makeText(getApplicationContext(), "ID registro: " + id, Toast.LENGTH_SHORT).show();
         }
 
         Intent intent = new Intent(this, ArbolActivity.class);
+        intent.putExtra("idUsuario", getIntent().getLongExtra("idUsuario", 0));
+        intent.putExtra("idCalle", id);
         startActivity(intent);
     }
 }

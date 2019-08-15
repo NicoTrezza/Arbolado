@@ -29,6 +29,19 @@ public class ArbolSQLite extends AdminSQLite {
         return db.insert(Contrato.ArbolEntry.TABLA, null, arbol.toContentValues());
     }
 
+    public Arbol traer(int idArbol) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(Contrato.ArbolEntry.SELECT + " WHERE " + Contrato.ArbolEntry.ID + "=" + idArbol, null);
+        Arbol arbol = null;
+
+        if (cursor.moveToFirst()) {
+            arbol = new Arbol(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
+                    Integer.parseInt(cursor.getString(2)), Float.parseFloat(cursor.getString(3)), Float.parseFloat(cursor.getString(4)),
+                    Float.parseFloat(cursor.getString(5)), cursor.getString(6), cursor.getString(7));
+        }
+
+        return arbol;
+    }
 
     public List<Arbol> traer() {
         SQLiteDatabase db = getReadableDatabase();

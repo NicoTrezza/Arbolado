@@ -7,19 +7,19 @@ import com.unla.arbolado.SQLite.Contrato;
 public class Coordenada {
 
     private int idCoordenada;
-    private double latitud;
-    private double longitud;
+    private String latitud;
+    private String longitud;
 
     public Coordenada() {
 
     }
 
-    public Coordenada(double latitud, double longitud) {
+    public Coordenada(String latitud, String longitud) {
         this.latitud = latitud;
         this.longitud = longitud;
     }
 
-    public Coordenada(int idCoordenada, double latitud, double longitud) {
+    public Coordenada(int idCoordenada, String latitud, String longitud) {
         this.idCoordenada = idCoordenada;
         this.latitud = latitud;
         this.longitud = longitud;
@@ -33,19 +33,19 @@ public class Coordenada {
         this.idCoordenada = idCoordenada;
     }
 
-    public double getLatitud() {
+    public String getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(double latitud) {
+    public void setLatitud(String latitud) {
         this.latitud = latitud;
     }
 
-    public double getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(double longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 

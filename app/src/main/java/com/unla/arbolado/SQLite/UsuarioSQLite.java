@@ -39,6 +39,18 @@ public class UsuarioSQLite extends AdminSQLite {
         return db.delete(Contrato.UsuarioEntry.TABLA, Contrato.UsuarioEntry.ID + "=" + idUsuario, null);
     }
 
+    public Usuario traer(int idUsuario) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(Contrato.UsuarioEntry.SELECT + " WHERE " + Contrato.UsuarioEntry.ID + "=" + idUsuario, null);
+        Usuario usuario = null;
+
+        if (cursor.moveToFirst()) {
+            usuario = new Usuario(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)));
+        }
+
+        return usuario;
+    }
+
     public List<Usuario> traer() {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(Contrato.UsuarioEntry.SELECT, null);

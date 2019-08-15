@@ -20,6 +20,7 @@ public class AdminSQLite extends SQLiteOpenHelper {
         db.execSQL(Contrato.ArbolEntry.CREATE);
         db.execSQL(Contrato.EstadoDelArbolEntry.CREATE);
         db.execSQL(Contrato.CoordenadaEntry.CREATE);
+        db.execSQL(Contrato.CensoEntry.CREATE);
     }
 
     @Override
@@ -29,6 +30,7 @@ public class AdminSQLite extends SQLiteOpenHelper {
         db.execSQL(Contrato.ArbolEntry.DROP);
         db.execSQL(Contrato.EstadoDelArbolEntry.DROP);
         db.execSQL(Contrato.CoordenadaEntry.DROP);
+        db.execSQL(Contrato.CensoEntry.DROP);
         onCreate(db);
     }
 
