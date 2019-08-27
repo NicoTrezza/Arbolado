@@ -28,6 +28,12 @@
                 android:textColor="#000"/>
 
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="309dp"
+                app:srcCompat="@drawable/credito" />
+
             <Button
                 android:id="@+id/btn_censar"
                 android:layout_width="match_parent"
