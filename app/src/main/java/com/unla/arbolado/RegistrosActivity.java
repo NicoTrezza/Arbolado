@@ -2,22 +2,15 @@ package com.unla.arbolado;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.unla.arbolado.SQLite.ArbolSQLite;
-import com.unla.arbolado.SQLite.CalleSQLite;
 import com.unla.arbolado.SQLite.CensoSQLite;
-import com.unla.arbolado.SQLite.CoordenadaSQLite;
-import com.unla.arbolado.SQLite.EstadoDelArbolSQLite;
-import com.unla.arbolado.SQLite.UsuarioSQLite;
-import com.unla.arbolado.modelo.Arbol;
-import com.unla.arbolado.modelo.Calle;
 import com.unla.arbolado.modelo.Censo;
-import com.unla.arbolado.modelo.Coordenada;
-import com.unla.arbolado.modelo.EstadoDelArbol;
-import com.unla.arbolado.modelo.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +34,17 @@ public class RegistrosActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, info);
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Censo censo = censos.get(i);
+                Intent intent = new Intent(RegistrosActivity.this, DetalleActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("censo", censo);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getInfo() {

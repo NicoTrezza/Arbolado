@@ -16,6 +16,7 @@
     <string name="tv_tituloestado">Datos del estado del arbol</string>
     <string name="tv_titulolocal">Captura las coordenadas</string>
     <string name="tv_titulovereda">Datos de la calle</string>
+    <string name="tv_titulodetalle">Detalle del arbol</string>
 
     <string name="et_calle">Calle</string>
     <string name="et_numerofrente">Numero de frente</string>
@@ -34,4 +35,7 @@
 
     <string name="btn_galeria">Ir a galeria</string>
     <string name="btn_camara">Ir a camara</string>
+
+    <string name="btn_editar">Editar</string>
+    <string name="btn_eliminar">Eliminar</string>
 </resources>

@@ -4,7 +4,9 @@ import android.content.ContentValues;
 
 import com.unla.arbolado.SQLite.Contrato;
 
-public class EstadoDelArbol {
+import java.io.Serializable;
+
+public class EstadoDelArbol implements Serializable {
 
     private int idEstadoDelArbol;
     private String estadoSanitario;

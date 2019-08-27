@@ -4,7 +4,9 @@ import android.content.ContentValues;
 
 import com.unla.arbolado.SQLite.Contrato;
 
-public class Arbol {
+import java.io.Serializable;
+
+public class Arbol implements Serializable {
 
     private int idArbol;
     private String especie;

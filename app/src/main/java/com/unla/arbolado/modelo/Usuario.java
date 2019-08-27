@@ -4,7 +4,9 @@ import android.content.ContentValues;
 
 import com.unla.arbolado.SQLite.Contrato;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private int idUsuario;
     private String nombre;

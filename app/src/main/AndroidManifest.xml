@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CoordenadaActivity"></activity>
+        <activity android:name=".DetalleActivity"></activity>
+        <activity android:name=".CoordenadaActivity" />
         <activity android:name=".EstadoActivity" />
         <activity android:name=".ArbolActivity" />
         <activity android:name=".CalleActivity" />

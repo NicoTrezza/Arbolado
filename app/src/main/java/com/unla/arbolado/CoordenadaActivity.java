@@ -85,10 +85,11 @@ public class CoordenadaActivity extends AppCompatActivity implements LocationLis
         if (latitud.isEmpty() || longitud.isEmpty()) {
             Toast.makeText(this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
         }
+        else if (Double.parseDouble(latitud) < -90 || Double.parseDouble(latitud) > 90 || Double.parseDouble(longitud) < -180 || Double.parseDouble(longitud) > 180) {
+            Toast.makeText(this, "Latitud debe estar entre -90 y 90\nLongitud debe estar entre -180 y 180", Toast.LENGTH_SHORT).show();
+        }
         else {
-            int id = (int) CoordenadaSQLite.getInstance(this).agregar(
-                    new Coordenada(latitud.split("\\.")[0] + "." + latitud.split("\\.")[1].substring(0, 5),
-                                longitud.split("\\.")[0] + "." + longitud.split("\\.")[1].substring(0, 5)));
+            int id = (int) CoordenadaSQLite.getInstance(this).agregar(new Coordenada(validarLatitud(latitud), validarLongitud(longitud)));
             Toast.makeText(getApplicationContext(), "ID registro: " + id, Toast.LENGTH_SHORT).show();
 
             int idUsuario = (int) getIntent().getLongExtra("idUsuario", 0);
@@ -103,6 +104,34 @@ public class CoordenadaActivity extends AppCompatActivity implements LocationLis
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+    }
+
+    private String validarLatitud(String latitud) {
+        String[] lat = latitud.split("\\.");
+        String l;
+
+        if (lat.length == 1)
+            l = lat[0];
+        else if (lat[1].length() < 5)
+            l = lat[0] + "." + lat[1];
+        else
+            l = lat[0] + "." + lat[1].substring(0, 5);
+
+        return l;
+    }
+
+    private String validarLongitud(String longitud) {
+        String[] lon = longitud.split("\\.");
+        String l;
+
+        if (lon.length == 1)
+            l = lon[0];
+        else if (lon[1].length() < 5)
+            l = lon[0] + "." + lon[1];
+        else
+            l = lon[0] + "." + lon[1].substring(0, 5);
+
+        return l;
     }
 
 }
