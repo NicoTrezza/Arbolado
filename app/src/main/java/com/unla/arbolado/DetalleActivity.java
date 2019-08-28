@@ -1,7 +1,9 @@
 package com.unla.arbolado;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -108,10 +110,28 @@ public class DetalleActivity extends AppCompatActivity {
     }
 
     public void eliminar(View view) {
-        int n = CensoSQLite.getInstance(this).eliminar(censo.getIdCenso());
-        if (n == 1)
-            Toast.makeText(this, "Se elimino correctamente", Toast.LENGTH_SHORT).show();
-        if (n == 0)
-            Toast.makeText(this, "No se pudo eliminar", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setMessage("Desea eliminar el registro?")
+                .setCancelable(true)
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int n = CensoSQLite.getInstance(DetalleActivity.this).eliminar(censo.getIdCenso());
+                        if (n == 1)
+                            Toast.makeText(DetalleActivity.this, "Se elimino correctamente", Toast.LENGTH_SHORT).show();
+                        if (n == 0)
+                            Toast.makeText(DetalleActivity.this, "No se pudo eliminar", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog titulo = alerta.create();
+        titulo.setTitle("Eliminar");
+        titulo.show();
     }
 }

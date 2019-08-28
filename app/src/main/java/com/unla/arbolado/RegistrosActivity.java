@@ -25,7 +25,11 @@ public class RegistrosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registros);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         listView = findViewById(R.id.lista);
         censos = CensoSQLite.getInstance(this).traer(this);
 
