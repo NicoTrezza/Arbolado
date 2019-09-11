@@ -101,7 +101,7 @@ public class CoordenadaActivity extends AppCompatActivity implements LocationLis
                     ArbolSQLite.getInstance(this).traer(idArbol), EstadoDelArbolSQLite.getInstance(this).traer(idEstadoDelArbol),
                     CoordenadaSQLite.getInstance(this).traer(id)));
 
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, CamaraActivity.class);
             startActivity(intent);
         }
     }
